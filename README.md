@@ -30,6 +30,7 @@ https://github.com/Alythar/UTS-UAS_Nisrina-Aliya-Tharifah_1237050044/issues/2#is
 https://github.com/Alythar/UTS-UAS_Nisrina-Aliya-Tharifah_1237050044/issues/1#issuecomment-1869547123
 
 ## 1.7 Link Demo game
+baru screenshotnya saja
 https://github.com/Alythar/UTS-UAS_Nisrina-Aliya-Tharifah_1237050044/issues/3#issuecomment-1871720706
 
 ## 1.8 Kode Pemograman Game
