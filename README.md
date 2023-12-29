@@ -29,6 +29,415 @@ https://github.com/Alythar/UTS-UAS_Nisrina-Aliya-Tharifah_1237050044/issues/2#is
 https://github.com/Alythar/UTS-UAS_Nisrina-Aliya-Tharifah_1237050044/issues/1#issuecomment-1869547123
 ## 1.7 Link Demo game
 ## 1.8 Kode Pemograman Game
+
+package gameAliya;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+class Pemain {
+    int x, y;
+
+    public Pemain(int x, int y) {
+       //parameter buat ngasih nilai awal posisi pas objek dibuat nanti 
+        this.x = x;
+        this.y = y;
+        //merujuk ke variabel kelas
+        //nilainya diterima dari konstruktor
+    }
+}
+
+class Musuh {
+    int x, y;
+
+    public Musuh(int x, int y) {  
+        this.x = x;
+        this.y = y;
+    }
+}
+
+class Poin {
+    int x, y;
+
+    public Poin(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+
+public class MathGame extends JFrame implements KeyListener {
+    // kelas turunan dari jframe yang bisa interaksi sama keyboard
+    private int skorPemain;
+    //untuk nyimpen score pemain pas main permainan
+    private int skorInputPemain;
+    //nyimpen score yang pemain input diawal
+
+    private JTabbedPane tabbedPane;
+    //nampilin tab di frame
+    private JPanel panelPermainan;
+    // tempat elemen yang ada untuk digambar
+
+    private Pemain pemain;
+    //objek pemain
+    private List<Musuh> musuhList;
+    //list yang nyimpen objek musuh
+    private List<Poin> jerukList;
+    //list buat nyimpen objek poin yang nilainya jeruk
+    private List<Poin> semangkaList;
+    //list buat nyimpen objek poin yang nilainya semangka
+    private List<Poin> anggurList;
+    //list buat nyimpen objek poin yang nilainya anggur
+
+
+    private Timer timerMusuh;
+    //timer untuk ngatur pergerakan musuh (acak)
+
+    public MathGame(int skorAwal) {
+       // kosntruktor
+        this.skorInputPemain = skorAwal;
+        this.skorPemain = 0;
+
+        tabbedPane = new JTabbedPane();
+        //objek tabbedpane buat nampilin tab layar permainan
+
+        panelPermainan = new JPanel() {
+            // objek untuk nampung elemen 
+            @Override
+            protected void paintComponent(Graphics g) {
+                //gambar elemen pake objek Graphics
+                // Graphics (g) untuk ngegambar
+                super.paintComponent(g);
+                gambarElemenPermainan(g);
+            }
+        };
+        tabbedPane.addTab("Permainan", panelPermainan);
+
+        pemain = new Pemain(100, 100);
+        //bikin objek pemain posisinya di (100,100)
+        musuhList = new ArrayList<>();
+        //array buat nyimpen objek musuh
+        jerukList = new ArrayList<>();
+        //array buat nyimpen objek point yang nilainya jeruk
+        semangkaList = new ArrayList<>();
+        //array buat nyimpen objek point yang nilainya semangka
+        anggurList = new ArrayList<>();
+        //array buat nyimpen objek point yang nilainya anggur
+        inisialisasiElemenPermainan();
+        //manggil method untuk inisialisasi elemen permainan
+
+        addKeyListener(this);
+        //nambahin keylistener ke frame supaya bisa ada input keyboard
+        setFocusable(true);
+        //ngatur biar frame fokus
+        setFocusTraversalKeysEnabled(false);
+
+        timerMusuh = new Timer(1000, new ActionListener() {
+            //bikin objek timer untuk ngatur gerakan si musuh acak setiap 1 detik(1000milidetik)
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //mempresentasikan prisyiwa yg terjadi
+                gerakMusuhSecaraAcak();
+                panelPermainan.repaint();
+                //gambar ulang pas ada pembaruan
+            }
+        });
+        timerMusuh.start();
+        //mulai pergerakan musuh
+
+        getContentPane().add(tabbedPane);
+        //nambahin contentpane ke frame pane
+        mulaiLoopPermainan();
+        //method untuk mulai permainanya
+    }
+
+    private void inisialisasiElemenPermainan() {
+        //method buat inisialisasi elemen dipermainan pas posisi random
+        Random rand = new Random();
+        for (int i = 0; i < 2; i++) {
+            musuhList.add(new Musuh(rand.nextInt(600), rand.nextInt(400)));
+        }
+
+        for (int i = 0; i < 3; i++) {
+            jerukList.add(new Poin(rand.nextInt(600), rand.nextInt(400)));
+            semangkaList.add(new Poin(rand.nextInt(600), rand.nextInt(400)));
+            anggurList.add(new Poin(rand.nextInt(600), rand.nextInt(400)));
+        }
+    }
+    //Loop for posisi musuh dan point (x,y)
+
+    private void gambarElemenPermainan(Graphics g) {
+        //method buat gambar elemen yang ada di panel
+        g.setColor(Color.GREEN);
+        g.fillRect(pemain.x, pemain.y, 20, 20);
+
+        g.setColor(Color.BLACK);
+        for (Musuh musuh : musuhList) {
+            g.fillRect(musuh.x, musuh.y, 20, 20);
+        }
+        //netepin warna
+        //gambar persegi sesuai ukuran dan posisi 
+
+        g.setColor(Color.ORANGE);
+        for (Poin jeruk : jerukList) {
+            g.fillOval(jeruk.x, jeruk.y, 20, 20);
+        }
+
+        g.setColor(Color.RED);
+        for (Poin semangka : semangkaList) {
+            g.fillOval(semangka.x, semangka.y, 20, 20);
+        }
+
+        g.setColor(Color.MAGENTA);
+        for (Poin anggur : anggurList) {
+            g.fillOval(anggur.x, anggur.y, 20, 20);
+        }
+    }
+    //netepin warna
+    //gambar bulet dengan posisi dan ukuran
+
+    private void gerakMusuhSecaraAcak() {
+        //method untuk gerakin musuh secara acak di panel
+        Random rand = new Random();
+
+        for (Musuh musuh : musuhList) {
+            int arah = rand.nextInt(4);
+
+            switch (arah) {
+                case 0:
+                    musuh.y -= 5;
+                    //kebawah
+                    break;
+                case 1:
+                    musuh.x += 5;
+                    //kanan
+                    break;
+                case 2:
+                    musuh.y += 5;
+                    break;
+                    //atas
+                case 3:
+                    musuh.x -= 5;
+                    //kiri
+                    break;
+            }
+        }
+    }
+
+    private void mulaiLoopPermainan() {
+        //method untuk mulai permainan (ngedeteksi tabrakan sama ngumpulin poin)
+        Timer timer = new Timer(100, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //memperbarui kondisi permainan
+                deteksiTabrakan();
+                deteksiPengumpulanPoint();
+                
+
+                if (skorPemain == skorInputPemain) {
+                    akhirPermain(true);
+                } else if (skorPemain > skorInputPemain) {
+                    akhirPermain(false);
+                    //ngecek kondisi game over
+                }
+            }
+        });
+        timer.start();
+    }
+
+    private void deteksiTabrakan() {
+        //ngedeteksi kalo pemainantabrakan sama musuh
+        for (Musuh musuh : musuhList) {
+            //lopnya buat objek musuh yang ada di musuhlist
+            if (pemain.x < musuh.x + 20 && pemain.x + 20 > musuh.x &&
+                pemain.y < musuh.y + 20 && pemain.y + 20 > musuh.y) {
+                    ///ini sulit...tabrakan kan tumpang tindih terus ditambah 20
+                    //supaya ngasih ruang tambahan biar klo kena daerah sekitaran situ brrt tabrakan
+                akhirPermain(false);
+                //klo nabrak atau tabrakan nnt argumenya false
+            }
+        }
+    }
+
+    private void deteksiPengumpulanPoint() {
+        for (Poin jeruk : jerukList) {
+            //loop utk objek jerus di dlm jeruk list
+            if (pemain.x < jeruk.x + 20 && pemain.x + 20 > jeruk.x &&
+                pemain.y < jeruk.y + 20 && pemain.y + 20 > jeruk.y) {
+                    //konsep sama kaya method tabrakan
+                skorPemain += 10;
+                //klo tabrakan tambah poin 10
+                jerukList.remove(jeruk);
+                if (jerukList.isEmpty()) {
+                    //masih bingung cara supaya kondisi point udh didapet sama dengan 3x
+                    //jadi masih diisi empty
+                    tampilkanPertanyaanMatematika("penjumlahan");
+                    
+                }
+                break;
+            }
+        }
+    
+        for (Poin semangka : semangkaList) {
+            if (pemain.x < semangka.x + 20 && pemain.x + 20 > semangka.x &&
+                pemain.y < semangka.y + 20 && pemain.y + 20 > semangka.y) {
+                skorPemain += 15;
+                semangkaList.remove(semangka);
+                if (semangkaList.isEmpty()) {
+                    //masih bingung cara supaya kondisi point udh didapet sama dengan 3x
+                    //jadi masih diisi empty
+                    tampilkanPertanyaanMatematika("perkalian");
+                }
+                break;
+            }
+        }
+    
+        for (Poin anggur : anggurList) {
+            if (pemain.x < anggur.x + 20 && pemain.x + 20 > anggur.x &&
+                pemain.y < anggur.y + 20 && pemain.y + 20 > anggur.y) {
+                skorPemain += 25;
+                anggurList.remove(anggur);
+                if (anggurList.isEmpty()) {
+                    //masih bingung cara supaya kondisi point udh didapet sama dengan 3x
+                    //jadi masih diisi empty
+                    tampilkanPertanyaanMatematika("turunan");
+                    
+                }
+                break;
+            }
+        }
+    }
+
+    private void tampilkanPertanyaanMatematika(String jenisSoal) {
+        Random rand = new Random();
+        //objekrandom buat angka acak
+    
+        int angka1 = rand.nextInt(10) + 1; // Angka random antara 1 dan 10
+        int angka2 = rand.nextInt(10) + 1;
+        // Angka random antara 1 dan 10 tambah satu biar ga keluar angka nol
+        int jawabanBenar;
+        String pertanyaan;
+    
+        switch (jenisSoal) {
+            //buat nentuin jenis soal
+            case "penjumlahan":
+                jawabanBenar = angka1 + angka2;
+                pertanyaan = "Berapakah hasil dari " + angka1 + " + " + angka2 + "?";
+                break;
+            case "perkalian":
+                jawabanBenar = angka1 * angka2;
+                pertanyaan = "Berapakah hasil dari " + angka1 + " * " + angka2 + "?";
+                break;
+            case "turunan":
+                jawabanBenar = angka1 - angka2;
+                pertanyaan = "Apa hasil turunan dari fungsi x^" + angka1 + " + " + angka2 + "?";
+                break;
+                //yang soal turunan masih belum tau cara nampilinya di terminal
+            default:
+                return; 
+                // Jenis soal diluar dari yang diatas nanti keluar dari method
+        }
+    
+        int jawabanSalah = rand.nextInt(10) + 1;
+         // Jawaban salah pake random acak biar salah supaya ga ush input2 lagi
+    
+        while (jawabanSalah == jawabanBenar) {
+            jawabanSalah = rand.nextInt(10) + 1;
+             // takutnya jawaban salah hasil random sama kaya jawaban bener jadi dibuat while
+             //buat masstiin aja
+        }
+    
+        Object[] options = {jawabanBenar, jawabanSalah};
+         // nampilih dua opsi jawaban
+         //array indeks 0 jawaban bener indeks 1 salah
+    
+        int jawabanPlayer = JOptionPane.showOptionDialog(null, pertanyaan, "Pertanyaan Matematika",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+    
+        if (jawabanPlayer == 0) {
+             // kondisi kalo jawaban player bener soalnya indeks ke 0
+            JOptionPane.showMessageDialog(null, "Jawaban Benar! Permainan Berlanjut.");
+        } else { 
+            akhirPermain(false);
+        }
+    }
+    
+
+    private void akhirPermain(boolean isMenang) {
+        if (isMenang) {
+            JOptionPane.showMessageDialog(this, "Selamat, Anda menang!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Maaf, Anda kalah. Coba lagi!");
+        }
+        
+    }
+
+@Override
+    public void keyTyped(KeyEvent e) {
+        // Menangani event key typed
+        //belum tau cara ngeimplementasiinya
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        // Menangani event key released
+        //blm tau cara implementasiinya
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        //nanganin kejadian waktu ketboard diteken
+        
+        int keyCode = e.getKeyCode();
+
+        switch (keyCode) {
+            case KeyEvent.VK_UP:
+                pemain.y -= 5;
+                break;
+            case KeyEvent.VK_DOWN:
+                pemain.y += 5;
+                break;
+            case KeyEvent.VK_LEFT:
+                pemain.x -= 5;
+                break;
+            case KeyEvent.VK_RIGHT:
+                pemain.x += 5;
+                break;
+        }
+
+        panelPermainan.repaint();
+        //gambar ulang perbarui posisi pemain
+    }
+
+    public static void main(String[] args) {
+        int skorAwal = Integer.parseInt(JOptionPane.showInputDialog("Masukkan skor awal pemain:"));
+        //input score awal pemain
+        MathGame permainan = new MathGame(skorAwal);
+        //inisialisasi gamenya
+        JFrame frame = new JFrame("Permainan Matematika");
+        //nyiapin frame utama buat setelah layar input score
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(800, 600);
+ 
+        frame.add(permainan.tabbedPane);
+        // nambahin tabe pane ke frame
+        frame.setVisible(true);
+        //nampilin frame
+    }
+}
+//nisrina masih nyari cara supaya pas elemen poin diambil pointya ilang dari layar
+//masih nyari yang kalo poin udah didapat 3x maka muncul pertanyaan matematika
+//masih mempelajari macem macem "key" soalnya belum paham tapi udah dipake
+//masih belum tahu cara bikin soal matematika berpangkatan di terminal
+
+
+
 ## 2. konsep variable, data type dan operator pada bahasa pemrograman digunakan dalam pembuatan game ini
 Pada game ini terdapat variabel, data type yang digunakan yaitu 
 2.1 Di class MathGame
