@@ -25,11 +25,14 @@ game ini untuk semua kalangan terutama pelajar karena ini berkaitan dengan perhi
 -player bisa mendapatkan point
 ## 1.5 Desain User Interface
 https://github.com/Alythar/UTS-UAS_Nisrina-Aliya-Tharifah_1237050044/issues/2#issue-2056450869
+
 ## 1.6 Flowchart
 https://github.com/Alythar/UTS-UAS_Nisrina-Aliya-Tharifah_1237050044/issues/1#issuecomment-1869547123
-## 1.7 Link Demo game
-## 1.8 Kode Pemograman Game
 
+## 1.7 Link Demo game
+https://github.com/Alythar/UTS-UAS_Nisrina-Aliya-Tharifah_1237050044/issues/3#issuecomment-1871720706
+
+## 1.8 Kode Pemograman Game
 package gameAliya;
 
 import javax.swing.*;
