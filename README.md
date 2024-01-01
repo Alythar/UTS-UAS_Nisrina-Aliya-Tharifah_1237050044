@@ -1,3 +1,4 @@
+# UTS-UAS NISRINA ALIYA THARIFAH_1237050044
 ## 1.1 Latar belakang
 Membuat game pertama saya, tentu itu bukan hal yang mudah bahkan sebetulnya rumit bagi saya yang baru mengenal pemrograman terutama bidang informatika oleh karena itu saya ingin membuat game yang membuat playernya berpikir dengan berhitung.saya akan membuat game perhitungan atau masuk kategori matematika. 
 ## 1.2 Deskripsi dan alur cerita dari game
