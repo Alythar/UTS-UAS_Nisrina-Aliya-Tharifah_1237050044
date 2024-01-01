@@ -21,9 +21,10 @@ karena untuk game ini berfokus untuk menghasilkan point yang sesuai dengan score
 b. target pengguna
 game ini untuk semua kalangan terutama pelajar karena ini berkaitan dengan perhitungan. namun saya lebih menargetkan kepada orang orang yang sedang tidak ada kerjaan.
 ## 1.4 apa aja yang bisa player lakukan
--player input score diawal
--player bisa bergerak (atas,bawah,kanan,kiri)
--player bisa mendapatkan point
+- player input score diawal
+- player bisa bergerak (atas,bawah,kanan,kiri)
+- player bisa mendapatkan point
+- player bisa memilih optsi jawaban dari soal matematika
 ## 1.5 Desain User Interface
 https://github.com/Alythar/UTS-UAS_Nisrina-Aliya-Tharifah_1237050044/issues/2#issue-2056450869
 
