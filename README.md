@@ -510,3 +510,10 @@ Memberhentikan timer dan memberikan opsi untuk keluar dari permainan.
 pada game ini diantaranya yaitu pada elemen musuh dan elemen poin (jeruk, semangaka,anggur) yang dimana array digunakan untuk menyimpan posisi dengan kordinat x,y
 ## 9. Pengembangan Algoritma
 untuk pengembangan Algoritma sendiri yaitu saya menambahkan musuh ke dalam game, yang dimana musuh bergerak secara random dan jika player bertabrakan dengan musuh maka permainan berakhir. disini juga saya menambahkan rintangan pada design game ini yaitu untuk jalur jalan yang dilalui oleh pemain tidak lurus saja melainkan ada rintangan yang harus dilewati pemain.
+
+## 10. bagaimana game yang dibuat dapat didistribusikan dan digunakan oleh pengguna
+- game disempurnakan terlebih dahulu 
+- game dikonversi menjadi aplikasi agar dapat diakses dengan mudah oleh - -pengguna nantinya
+- menguji coba game kepada beberapa orang dan meminta ulasanya.
+- membuat deskripsi mengenai game dengan menyertakan dokumentasi game 
+- mempublikasikan game di platform maupun di media sosial dengan menyertakan deskripsi dan ulasan mengenai game.
