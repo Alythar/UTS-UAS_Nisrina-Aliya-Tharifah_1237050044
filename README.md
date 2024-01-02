@@ -37,7 +37,7 @@ https://github.com/Alythar/UTS-UAS_Nisrina-Aliya-Tharifah_1237050044/issues/3#is
 - link youtube demo game
   dijadikan 2 video terpisah karena channel Youtube saya belum terverifikasi sehingga tidak dapat upload video durasi di atas 15 menit.
   - Part 1  https://youtu.be/7SDYCuz_3PE
-  - Part 2
+  - Part 2  https://youtu.be/FjYccXB99dk
 
 ## 1.8 Kode Pemograman Game
 package gameAliya;
