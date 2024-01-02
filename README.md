@@ -518,7 +518,7 @@ untuk pengembangan Algoritma sendiri yaitu saya menambahkan musuh ke dalam game,
 
 ## 10. bagaimana game yang dibuat dapat didistribusikan dan digunakan oleh pengguna
 - game disempurnakan terlebih dahulu 
-- game dikonversi menjadi aplikasi agar dapat diakses dengan mudah oleh - -pengguna nantinya
+- game dikonversi menjadi aplikasi agar dapat diakses dengan mudah oleh pengguna nantinya
+-  membuat deskripsi mengenai game dengan menyertakan dokumentasi game 
 - menguji coba game kepada beberapa orang dan meminta ulasanya.
-- membuat deskripsi mengenai game dengan menyertakan dokumentasi game 
 - mempublikasikan game di platform maupun di media sosial dengan menyertakan deskripsi dan ulasan mengenai game.
