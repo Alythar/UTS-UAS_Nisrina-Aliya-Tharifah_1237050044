@@ -35,7 +35,7 @@ https://github.com/Alythar/UTS-UAS_Nisrina-Aliya-Tharifah_1237050044/issues/1#is
 - screenshot dan gift screenrecord 
 https://github.com/Alythar/UTS-UAS_Nisrina-Aliya-Tharifah_1237050044/issues/3#issuecomment-1871720706
 - link youtube demo game
-https://youtu.be/UiWwkNsA7a4
+https://youtu.be/pxbDXqHhh2s
 
 ## 1.8 Kode Pemograman Game
 package gameAliya;
