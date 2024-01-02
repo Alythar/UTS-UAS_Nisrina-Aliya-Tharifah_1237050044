@@ -2,8 +2,8 @@
 ## 1.1 Latar belakang
 Membuat game pertama saya, tentu itu bukan hal yang mudah bahkan sebetulnya rumit bagi saya yang baru mengenal pemrograman terutama bidang informatika oleh karena itu saya ingin membuat game yang membuat playernya berpikir dengan berhitung.saya akan membuat game perhitungan atau masuk kategori matematika. 
 ## 1.2 Deskripsi dan alur cerita dari game
-permainan dimulai player bisa bergerak menggunakan keyboard.
-Didalam permainan terdapat 2 musuh berupa batu bulat yang bergerak random. Jika player bertabrakan dengan musuh maka permainan berakhir.
+permainan dimulai dengan player dapat input score sesuai angka yang player inginkan yang nantinya player harus bisa menghasilkan total point yang sama sesuai dengan point yang player input diawal.
+Didalam permainan terdapat 2 musuh berupa batu kotak yang bergerak random. Jika player bertabrakan dengan musuh maka permainan berakhir.
 
 Di dalam permainan terdapat 3 jenis point yang menyebar secara random:
 
