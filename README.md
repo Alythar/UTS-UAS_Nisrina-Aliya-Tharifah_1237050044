@@ -15,10 +15,10 @@ Point anggur yang memiliki nilai 25 point. Ketika player telah mendapatkan 3 kal
 
 Di akhir permainan, untuk menentukan kemenangan, jika point yang didapatkan player nilainya sama dengan score yang player input di awal maka player menang, namun jika ternyata point yang diperoleh player tidak sama dengan nilai score yang player input di awal maka player kalah.
 ## 1.3 branding dari game
-a. nama
+- nama
 namanya inputScore
 karena untuk game ini berfokus untuk menghasilkan point yang sesuai dengan score yang diinput pemain d awal.
-b. target pengguna
+- target pengguna
 game ini untuk semua kalangan terutama pelajar karena ini berkaitan dengan perhitungan. namun saya lebih menargetkan kepada orang orang yang sedang tidak ada kerjaan.
 ## 1.4 apa aja yang bisa player lakukan
 - player input score diawal
@@ -61,6 +61,9 @@ class Pemain {
         this.y = y;
         //merujuk ke variabel kelas
         //nilainya diterima dari konstruktor
+    }
+
+    public void setFocusable(boolean b) {
     }
 }
 
@@ -147,6 +150,10 @@ public class MathGame extends JFrame implements KeyListener {
         setFocusable(true);
         //ngatur biar frame fokus
         setFocusTraversalKeysEnabled(false);
+        setFocusable(true);
+        requestFocusInWindow();
+
+
 
         timerMusuh = new Timer(1000, new ActionListener() {
             //bikin objek timer untuk ngatur gerakan si musuh acak setiap 1 detik(1000milidetik)
@@ -186,6 +193,7 @@ public class MathGame extends JFrame implements KeyListener {
         //method buat gambar elemen yang ada di panel
         g.setColor(Color.GREEN);
         g.fillRect(pemain.x, pemain.y, 20, 20);
+        pemain.setFocusable(true);
 
         g.setColor(Color.BLACK);
         for (Musuh musuh : musuhList) {
@@ -284,9 +292,7 @@ public class MathGame extends JFrame implements KeyListener {
                 skorPemain += 10;
                 //klo tabrakan tambah poin 10
                 jerukList.remove(jeruk);
-                if (jerukList.isEmpty()) {
-                    //masih bingung cara supaya kondisi point udh didapet sama dengan 3x
-                    //jadi masih diisi empty
+                if (skorPemain % 30 == 0) {
                     tampilkanPertanyaanMatematika("penjumlahan");
                     
                 }
@@ -299,9 +305,7 @@ public class MathGame extends JFrame implements KeyListener {
                 pemain.y < semangka.y + 20 && pemain.y + 20 > semangka.y) {
                 skorPemain += 15;
                 semangkaList.remove(semangka);
-                if (semangkaList.isEmpty()) {
-                    //masih bingung cara supaya kondisi point udh didapet sama dengan 3x
-                    //jadi masih diisi empty
+                if (skorPemain % 45 == 0) {
                     tampilkanPertanyaanMatematika("perkalian");
                 }
                 break;
@@ -313,9 +317,7 @@ public class MathGame extends JFrame implements KeyListener {
                 pemain.y < anggur.y + 20 && pemain.y + 20 > anggur.y) {
                 skorPemain += 25;
                 anggurList.remove(anggur);
-                if (anggurList.isEmpty()) {
-                    //masih bingung cara supaya kondisi point udh didapet sama dengan 3x
-                    //jadi masih diisi empty
+                if (skorPemain % 75 == 0) {
                     tampilkanPertanyaanMatematika("turunan");
                     
                 }
@@ -390,28 +392,28 @@ public class MathGame extends JFrame implements KeyListener {
 
 @Override
     public void keyTyped(KeyEvent e) {
-        // Menangani event key typed
-        //belum tau cara ngeimplementasiinya
+        // nanganin event key typed
+       
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        // Menangani event key released
-        //blm tau cara implementasiinya
+        // nanganin event key released
+        
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        //nanganin kejadian waktu ketboard diteken
+        //nanganin kejadian waktu keyboard diteken
         
         int keyCode = e.getKeyCode();
 
         switch (keyCode) {
             case KeyEvent.VK_UP:
-                pemain.y -= 5;
+                pemain.y += 5;
                 break;
             case KeyEvent.VK_DOWN:
-                pemain.y += 5;
+                pemain.y -= 5;
                 break;
             case KeyEvent.VK_LEFT:
                 pemain.x -= 5;
@@ -439,14 +441,10 @@ public class MathGame extends JFrame implements KeyListener {
         // nambahin tabe pane ke frame
         frame.setVisible(true);
         //nampilin frame
+        permainan.requestFocus();
+        permainan.setFocusable(true);
     }
 }
-//nisrina masih nyari cara supaya pas elemen poin diambil pointya ilang dari layar
-//masih nyari yang kalo poin udah didapat 3x maka muncul pertanyaan matematika
-//masih mempelajari macem macem "key" soalnya belum paham tapi udah dipake
-//masih belum tahu cara bikin soal matematika berpangkatan di terminal
-
-
 
 ## 2. konsep variable, data type dan operator pada bahasa pemrograman digunakan dalam pembuatan game ini
 Pada game ini terdapat variabel, data type yang digunakan yaitu 
